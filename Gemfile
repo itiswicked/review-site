@@ -6,6 +6,8 @@ gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
+gem 'devise'
+
 group :development do
   gem 'listen', '~> 3.0.5'
   gem 'spring'
@@ -20,6 +22,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.5'
   gem 'shoulda-matchers', require: false
   gem 'valid_attribute'
+  gem 'database_cleaner'
 end
 
 group :production do
