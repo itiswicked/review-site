@@ -1,1 +1,8 @@
 <%= render 'layouts/login_header' %>
+<h1>Items for Review</h1>
+
+<% @items.each do |item| %>
+  <ul>
+    <%= link_to item.name, item_path(item) %>
+  </ul>
+<% end %>
