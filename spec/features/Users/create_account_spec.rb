@@ -10,18 +10,16 @@ feature 'user creates new account' do
     )
   }
 
-    scenario 'user visits homepage' do
+    scenario 'unauthenticated user visits homepage' do
       visit '/'
 
-      click_button 'Create Account'
-
-      expect(page).to have_content('Sign up')
+      expect(page).to have_content('You need to sign in or sign up before continuing.')
     end
 
     scenario 'user successfully creates account' do
       visit '/'
 
-      click_button 'Create Account'
+      click_button 'Sign up'
 
       fill_in 'Username', with: new_user.username
       fill_in 'Email', with: new_user.email
@@ -36,7 +34,7 @@ feature 'user creates new account' do
     scenario 'user unsuccessfully creates account' do
       visit '/'
 
-      click_button 'Create Account'
+      click_button 'Sign up'
 
       fill_in 'Username', with: new_user.username
       fill_in 'Email', with: new_user.email
