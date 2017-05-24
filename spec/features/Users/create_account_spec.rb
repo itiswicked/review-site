@@ -11,13 +11,13 @@ feature 'user creates new account' do
   }
 
     scenario 'unauthenticated user visits homepage' do
-      visit '/'
+      visit root_path
 
       expect(page).to have_content('You need to sign in or sign up before continuing.')
     end
 
     scenario 'user successfully creates account' do
-      visit '/'
+      visit root_path
 
       click_button 'Sign up'
 
@@ -32,7 +32,7 @@ feature 'user creates new account' do
     end
 
     scenario 'user unsuccessfully creates account' do
-      visit '/'
+      visit root_path
 
       click_button 'Sign up'
 
