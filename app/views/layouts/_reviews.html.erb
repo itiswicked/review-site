@@ -1,0 +1,48 @@
+<!-- comments -->
+<div class="comment-section-container">
+  <h3>Reviews (<%= @counted %>)</h3>
+  <div class="comment-section-author">
+    <img src="http://placehold.it/50x50" alt="">
+    <div class="comment-section-name">
+      <h5><a href="">Janice Jones</a></h5>
+      <p>March 12, 2017 at 1:28pm</p>
+    </div>
+  </div>
+  <div class="comment-section-text">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia bibendum nulla sed consectetur. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum facilis tenetur a voluptatibus quia
+      deserunt.
+    </p>
+  </div>
+  <div class="comment-section-author">
+    <img src="http://placehold.it/50x50" alt="">
+    <div class="comment-section-name">
+      <h5><a href="">Janice Jones</a></h5>
+      <p>March 12, 2017 at 1:28pm</p>
+    </div>
+  </div>
+  <div class="comment-section-text">
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia bibendum nulla sed consectetur. Nulla vitae elit libero, a pharetra augue. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Harum facilis tenetur a voluptatibus quia deserunt.
+    </p>
+  </div>
+</div>
+<!--/comments-->
+
+<!-- comment form -->
+<!-- replace rails form here <form class="comment-section-form"> -->
+<%= form_for(@reviews) do |f| %>
+  <div class="comment-section-box">
+    <div class="row">
+      <div class="small-12 column">
+        <h4>Leave a Review</h4>
+
+          <!-- f.text_area<textarea rows="10" type="text"></textarea> -->
+          <%= f.label :review, Review %>
+          <%= f.text_area :review, rows: "10" %>
+
+        <button class="button expanded">
+          <%= f.submit(:Submit) %>
+        </button>
+      </div>
+    </div>
+  </div>
+<% end %>

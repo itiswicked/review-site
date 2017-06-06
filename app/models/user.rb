@@ -6,4 +6,7 @@ class User < ApplicationRecord
   validates :username, presence: true
   validates :first_name, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, allow_blank: true
   validates :last_name, format: { with: /\A[a-zA-Z]+\z/, message: "only allows letters" }, allow_blank: true
+
+  has_many :items
+  has_many :reviews
 end

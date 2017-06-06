@@ -10,6 +10,19 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
+ *= require foundation_and_overrides
  *= require_self
- */
+*/
+
+@import 'user_dashboard.scss';
+@import 'profile_banner.scss';
+@import 'nav_bar.scss';
+@import 'review_section.scss';
+
+footer {
+  padding: 8px;
+}
+
+.form-body {
+  padding: 1em 5em 1em 5em;
+}

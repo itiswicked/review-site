@@ -1,3 +1,55 @@
-<div class="profile_header">
-  Welcome <%= @user.username %>!
-</div>
+<%= render "layouts/profile_banner" %>
+
+<section class="product-feature-section">
+  <div class="product-feature-section-outer">
+    <h4 class="product-feature-section-headline">Account Dashboard</h4>
+
+    <div class="product-feature-section-inner">
+
+      <div class="product-feature-section-feature top-left">
+        <i class="fa fa-shield" aria-hidden="true"></i>
+        <div>
+          <p class="feature-title">User Information</p>
+          <p class="feature-desc">
+            <%= link_to "Edit/Update your account information", edit_user_registration_path %>
+          </p>
+        </div>
+      </div>
+
+      <div class="product-feature-section-feature top-right">
+        <i class="fa fa-heart" aria-hidden="true"></i>
+        <div>
+          <p class="feature-title">Your most recent items for review</p>
+          <ul class="feature-recent-three">
+            <% @last_three_items.each do |item| %>
+              <div> <%= link_to item.name, user_item_path(current_user) %></div>
+            <% end %>
+          </ul>
+          <p class="feature-desc"><%= link_to 'See all of your items', user_items_path(current_user) %></p>
+        </div>
+      </div>
+
+      <div class="product-feature-section-feature bottom-left">
+        <i class="fa fa-coffee" aria-hidden="true"></i>
+        <div>
+          <p class="feature-title">Reviews you've posted for an item</p>
+          <ul class="feature-recent-three">
+            <% @last_three_reviews.each do |review| %>
+              <div> <%= link_to review.name, user_review_path(current_user) %></div>
+            <% end %>
+          </ul>
+          <p class="feature-desc"><%= link_to 'See all of your reviews', user_reviews_path(current_user)%></p>
+        </div>
+      </div>
+
+      <div class="product-feature-section-feature bottom-right">
+        <i class="fa fa-map-marker" aria-hidden="true"></i>
+        <div>
+          <p class="feature-title">Abominable Snowman</p>
+          <p class="feature-desc">Hails from the Himalayans</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
