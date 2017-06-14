@@ -1,8 +1,8 @@
 class Review < ApplicationRecord
-  validates :name, presence: true
-  validates :description, length: { minimum: 50 }
+  validates :description, length: { minimum: 50 }, uniqueness: true
   validates :user_id, presence: true
   validates :item_id, presence: true
 
   belongs_to :user
+  belongs_to :item
 end

@@ -12,12 +12,10 @@
  *
  *= require foundation_and_overrides
  *= require_self
+ *= require_tree
 */
 
-@import 'user_dashboard.scss';
-@import 'profile_banner.scss';
-@import 'nav_bar.scss';
-@import 'review_section.scss';
+@import "foundation_and_overrides";
 
 footer {
   padding: 8px;

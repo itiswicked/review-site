@@ -4,7 +4,7 @@
       <%= button_to "Add an item for review!", new_user_item_path(current_user), method: :get %>
     </div>
     <div class="logoutbutton">
-      <%= button_to 'Log out', destroy_user_session_path(current_user), method: :delete %>
+      <%= button_to 'Log out', destroy_user_session_path, method: :delete %>
     </div>
   <% end %>
 </footer>

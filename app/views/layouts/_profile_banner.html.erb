@@ -1,7 +1,11 @@
 <div class="profile-body">
 <div class="card-profile-stats">
   <div class="card-profile-stats-intro">
-    <%= image_tag(@user.avatar, class: "card-profile-stats-intro-pic", alt: "profile-image") %>
+    <% if @user.avatar? %>
+      <%= image_tag(@user.avatar, class: "card-profile-stats-intro-pic", alt: "profile-image") %>
+    <% else %>
+      <%= image_tag("http://khcsalon.pl/wp-content/uploads/2013/10/male12.png", class: "card-profile-stats-intro-pic", alt: "profile-image") %>
+    <% end %>
     <div class="card-profile-stats-intro-content">
       <h3><%= @user.username %></h3>
     </div> <!-- /.card-profile-stats-intro-content -->

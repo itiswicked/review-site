@@ -51,7 +51,7 @@ feature 'user creates new account' do
       sign_in user
       visit root_path
 
-      expect(page).to have_content("Welcome #{user.username}")
+      expect(page).to have_content("#{user.username}")
     end
 
     scenario 'user successfully logs out of their account' do

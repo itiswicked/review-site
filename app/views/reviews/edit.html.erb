@@ -1,0 +1,17 @@
+<div class="review-body">
+  <%= form_for [@item, @review] do |f| %>
+    <div class="comment-section-box">
+      <div class="row">
+        <div class="small-12 column">
+          <h4>Edit Your Review</h4>
+
+          <%= f.text_area :description, value: @review.description, rows: "10" %>
+
+          <div class="actions">
+            <%= f.submit("Submit") %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

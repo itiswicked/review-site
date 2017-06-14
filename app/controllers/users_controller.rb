@@ -8,4 +8,10 @@ class UsersController < ApplicationController
     @reviews = @user.reviews.count
     @last_three_reviews = @user.reviews.order(updated_at: :desc).limit(3)
   end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+  end
+
 end
