@@ -10,11 +10,9 @@ class ItemsController < ApplicationController
   end
 
   def show
-    binding.pry
-    @item = Item.find(params[:id])
+    @item = Item.find(params[:user_id])
     @reviews = @item.reviews.order(updated_at: :desc)
     @counted = @reviews.count
-    @user = User.all
     @review = Review.new
   end
 
