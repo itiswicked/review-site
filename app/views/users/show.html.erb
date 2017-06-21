@@ -35,6 +35,7 @@
           <p class="feature-title">Items you've reviewed</p>
           <ul class="feature-recent-three">
             <% @last_three_reviews.each do |review| %>
+            <% binding.pry %>
               <div> <%= link_to truncate(review.item.name), item_path(review.item) %></div>
             <% end %>
           </ul>
