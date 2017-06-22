@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   end
 
   resources :users, only: [:index, :show] do
-    resources :items, only: [:index, :show, :new, :create, :edit, :update, :destroy]
-    resources :reviews, only: [:show]
+    resources :items, only: [:index]
+    resources :reviews, only: [:index]
   end
-  resources :items, only: [:index, :show, :edit, :destroy] do
-    resources :reviews, only: [:index, :new, :create, :edit, :update, :destroy]
+  resources :items, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
+    resources :reviews, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   end
 end

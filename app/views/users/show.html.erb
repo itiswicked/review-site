@@ -22,7 +22,7 @@
           <p class="feature-title">Your most recent items for review</p>
           <ul class="feature-recent-three">
             <% @last_three_items.each do |item| %>
-              <div> <%= link_to item.name, user_item_path(item) %></div>
+              <div> <%= link_to item.name, item_path(item) %></div>
             <% end %>
           </ul>
           <p class="feature-desc"><%= link_to 'See all of your items', user_items_path(current_user) %></p>
@@ -35,11 +35,10 @@
           <p class="feature-title">Items you've reviewed</p>
           <ul class="feature-recent-three">
             <% @last_three_reviews.each do |review| %>
-            <% binding.pry %>
               <div> <%= link_to truncate(review.item.name), item_path(review.item) %></div>
             <% end %>
           </ul>
-          <p class="feature-desc"><%= link_to 'See all of your reviews', user_review_path(current_user)%></p>
+          <p class="feature-desc"><%= link_to 'See all of your reviews', user_reviews_path(current_user)%></p>
         </div>
       </div>
 

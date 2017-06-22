@@ -12,7 +12,9 @@
     <div class="comment-section-name">
       <h5><%= @item.user.username %></h5>
       <p><%= @item.updated_at %></p>
-    
+      <% if @item.user == current_user %>
+        <%= button_to 'Edit your item', edit_item_path(@item), method: :get %>
+      <% end %>
     </div>
   </div>
 </div>

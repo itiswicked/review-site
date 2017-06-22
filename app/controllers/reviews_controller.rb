@@ -1,6 +1,14 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
 
+  def index
+    if params[:user_id]
+      @reviews = Review.where(user_id: params[:user_id]).order(updated_at: :desc)
+    else
+      @reviews = Review.order(updated_at: :desc)
+    end
+  end
+
   def new
     @review = Review.new
   end
