@@ -1,0 +1,31 @@
+<div class="profile-body">
+<div class="card-profile-stats">
+  <div class="card-profile-stats-intro">
+    <% if @user.avatar? %>
+      <%= image_tag(@user.avatar, class: "card-profile-stats-intro-pic", alt: "profile-image") %>
+    <% else %>
+      <%= image_tag("http://khcsalon.pl/wp-content/uploads/2013/10/male12.png", class: "card-profile-stats-intro-pic", alt: "profile-image") %>
+    <% end %>
+    <div class="card-profile-stats-intro-content">
+      <h3><%= @user.username %></h3>
+    </div> <!-- /.card-profile-stats-intro-content -->
+  </div> <!-- /.card-profile-stats-intro -->
+
+  <hr />
+
+  <div class="card-profile-stats-container">
+    <div class="card-profile-stats-statistic">
+      <span class="stat"><%= @items %></span>
+      <p>Items</p>
+    </div> <!-- /.card-profile-stats-statistic -->
+    <div class="card-profile-stats-statistic">
+      <span class="stat"><%= @reviews %></span>
+      <p>reviews</p>
+    </div> <!-- /.card-profile-stats-statistic -->
+    <div class="card-profile-stats-statistic">
+      <span class="stat">TBD</span>
+      <p>Votes</p>
+    </div> <!-- /.card-profile-stats-statistic -->
+  </div> <!-- /.card-profile-stats-container -->
+</div> <!-- /.card-profile-stats -->
+</div>

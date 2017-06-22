@@ -7,6 +7,16 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'devise'
+gem 'foundation-rails'
+
+group :test do
+  gem 'launchy', require: false
+  gem 'capybara'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers', require: false
+  gem 'valid_attribute'
+  gem 'database_cleaner'
+end
 
 group :development do
   gem 'listen', '~> 3.0.5'
@@ -15,14 +25,8 @@ group :development do
 end
 
 group :development, :test do
-  gem 'capybara'
-  gem 'factory_girl_rails'
-  gem 'launchy', require: false
   gem 'pry-rails'
   gem 'rspec-rails', '~> 3.5'
-  gem 'shoulda-matchers', require: false
-  gem 'valid_attribute'
-  gem 'database_cleaner'
 end
 
 group :production do

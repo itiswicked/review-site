@@ -1,0 +1,23 @@
+@import "settings";
+
+$comment-section-bg: $light-gray;
+$comment-section-padding: $global-padding;
+
+.item-section-container {
+  background-color: $comment-section-bg;
+  padding: $global-padding;
+}
+
+.comment-section-author {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  .comment-section-name {
+    margin-left: 1rem;
+
+    p {
+      margin-bottom: 0;
+    }
+  }
+}

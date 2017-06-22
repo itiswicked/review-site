@@ -14,7 +14,7 @@ feature 'user creates new account' do
     scenario 'unauthenticated user visits homepage' do
       visit new_user_session_path
 
-      expect(page).to have_content('You need to sign in or sign up before continuing.')
+      expect(page).to have_content("Log in Email")
     end
 
     scenario 'user successfully creates account' do
@@ -29,7 +29,7 @@ feature 'user creates new account' do
 
       click_button 'Sign up'
 
-      expect(page).to have_content('Welcome! You have signed up successfully.')
+      expect(page).to have_content("Welcome! You have signed up successfully.")
     end
 
     scenario 'user unsuccessfully creates account' do
@@ -51,7 +51,7 @@ feature 'user creates new account' do
       sign_in user
       visit root_path
 
-      expect(page).to have_content('Items for Review')
+      expect(page).to have_content("#{user.username}")
     end
 
     scenario 'user successfully logs out of their account' do
@@ -62,6 +62,6 @@ feature 'user creates new account' do
       sign_out user
       visit root_path
 
-      expect(page).to have_content('You need to sign in or sign up before continuing.')
+      expect(page).to have_content("Log in Email")
     end
 end
