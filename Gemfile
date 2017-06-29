@@ -8,6 +8,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'jquery-rails'
 gem 'devise'
 gem 'foundation-rails'
+gem 'active_model_serializers'
 
 group :test do
   gem 'launchy', require: false

@@ -5,19 +5,95 @@ $comment-section-padding: $global-padding;
 
 .item-section-container {
   background-color: $comment-section-bg;
-  padding: $global-padding;
+  padding: 1rem 20rem 0.2rem 1rem;
 }
 
-.comment-section-author {
+.item-section-author {
   display: flex;
   align-items: center;
   margin-bottom: 1rem;
 
-  .comment-section-name {
+  .item-section-name {
     margin-left: 1rem;
 
     p {
       margin-bottom: 0;
+    }
+  }
+}
+
+.button-pad {
+  padding-left: 2rem;
+}
+
+.button-like {
+  border: 2px solid $dark-gray;
+  background-color: transparent;
+  text-decoration: none;
+  padding: 1rem;
+  position: relative;
+  vertical-align: middle;
+  text-align: center;
+  display: inline-block;
+  border-radius: 3rem;
+  color: $dark-gray;
+  transition: all ease 0.4s;
+
+  span {
+    margin-left: 0.5rem;
+  }
+
+  .fa,
+  span {
+    transition: all ease 0.4s;
+  }
+
+  &:focus {
+    background-color: transparent;
+
+    .fa,
+    span {
+      color: $dark-gray;
+    }
+  }
+
+  &:hover {
+    border-color: $alert-color;
+    background-color: transparent;
+
+    .fa,
+    span {
+      color: $alert-color;
+    }
+  }
+}
+
+.liked {
+  background-color: $alert-color;
+  border-color: $alert-color;
+
+  .fa,
+  span {
+    color: $white;
+
+  }
+
+  &:focus {
+    background-color: $alert-color;
+
+    .fa,
+    span {
+      color: $white;
+    }
+  }
+
+  &:hover {
+    background-color: $alert-color;
+    border-color: $alert-color;
+
+    .fa,
+    span {
+      color: $white;
     }
   }
 }

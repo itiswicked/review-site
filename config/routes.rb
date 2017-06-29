@@ -12,4 +12,14 @@ Rails.application.routes.draw do
   resources :items, only: [:index, :show, :new, :create, :edit, :update, :destroy] do
     resources :reviews, only: [:index, :show, :new, :create, :edit, :update, :destroy]
   end
+  namespace :api do
+    namespace :v1 do
+      resources :reviews do
+        member do
+          post 'upvote'
+          post 'downvote'
+        end
+      end
+    end
+  end
 end

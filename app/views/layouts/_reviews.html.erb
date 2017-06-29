@@ -1,44 +1,62 @@
 <!-- reviews -->
 <div class="review-body">
-<div class="comment-section-container">
-  <h3>Reviews (<%= @counted %>)</h3>
-  <% if @reviews %>
-    <% @reviews.each do |review| %>
-    <div class="comment-section-author">
-      <div class="review-avatar", style="max-width: 65px">
-        <%= image_tag(review.user.avatar) %>
-      </div>
-      <div class="comment-section-name">
-        <h5><%= review.user.username %></h5>
-        <p><%= review.updated_at %></p>
-      </div>
-    </div>
-    <div class="comment-section-text">
-      <p><%= review.description %></p>
-      <% if review.user == current_user %>
-        <%= button_to 'Edit your review', edit_item_review_path(review.item, review), method: :get %>
-        <%= button_to 'Delete your review', item_review_path(review.item, review), method: :delete, data: { confirm: 'Are you sure?' } %>
+  <div class="comment-section-container">
+    <h3>Reviews (<%= @counted %>)</h3>
+      <% if @reviews %>
+        <% @reviews.each do |review| %>
+          <div class="border">
+            <div class="comment-section-author">
+              <div class="review-avatar", style="max-width: 65px">
+                <%= image_tag(review.user.avatar) %>
+              </div>
+              <div class="comment-section-name">
+                <h5><%= review.user.username %></h5>
+                <p><%= review.updated_at %></p>
+              </div>
+            </div>
+            <div class="comment-section-text">
+              <p><%= review.description %></p>
+              <% if review.user == current_user %>
+                <%= button_to 'Edit your review', edit_item_review_path(review.item, review), method: :get %>
+                <%= button_to 'Delete your review', item_review_path(review.item, review), method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+            <table>
+              <tbody>
+                <tr>
+                  <td class="votecell">
+                    <%= link_to upvote_api_v1_review_path(review), class: "upvote", method: :post do %>
+                      <div id="up" class="vote"></div>
+                    <% end %>
+                    <!-- <td><%= pluralize(review.votes.count, "vote") %></td> -->
+                    <%= link_to downvote_api_v1_review_path(review), class: "downvote", method: :post do %>
+                      <div id="down" class="vote"></div>
+                    <% end %>
+                  </td>
+                <tr>
+              </tbody>
+          </table>
+        <% end %>
       <% end %>
     </div>
-    <% end %>
-  <% end %>
+  </div>
 <!--/reviews-->
 
 <!-- review form -->
-<%= form_for [@item, @review] do |f| %>
-  <div class="comment-section-box">
-    <div class="row">
-      <div class="small-12 column">
-        <h4>Leave a Review</h4>
+  <%= form_for [@item, @review] do |f| %>
+    <div class="comment-section-box">
+      <div class="row">
+        <div class="small-12 column">
+          <h4>Leave a Review</h4>
 
-        <!-- text area for reviews -->
-        <%= f.text_area :description, rows: "10" %>
+          <!-- text area for reviews -->
+          <%= f.text_area :description, rows: "10" %>
 
-        <div class="actions">
-          <%= f.submit "Submit" %>
+          <div class="actions">
+            <%= f.submit "Submit" %>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 </div>

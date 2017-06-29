@@ -4,16 +4,48 @@ $comment-form-bg: $light-gray;
 $comment-section-bg: $white;
 $comment-section-padding: $global-padding;
 
+.vote {
+  display: inline-block;
+  overflow: hidden;
+  width: 40px;
+  height: 25px;
+  cursor: pointer;
+  background: url('http://i.stack.imgur.com/iqN2k.png');
+  background-position: 0 -25px;
+}
+
+.downvote {
+  display: inline-block;
+  overflow: hidden;
+  width: 40px;
+  height: 25px;
+  cursor: pointer;
+  -ms-transform: rotate(180deg); /* IE 9 */
+  -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+  transform: rotate(180deg);
+  background: url('http://i.stack.imgur.com/iqN2k.png');
+  background-position: 0 -25px;
+}
+
+.vote.on {
+  background-position: 0 2px;
+}
+
 .review-body {
   padding: 2em 20em 2em 20em;
 }
 
 .comment-section-container {
   background-color: $comment-section-bg;
-  padding: $global-padding;
+
+}
+
+.border {
+  border-top: 2px solid;
 }
 
 .comment-section-author {
+  padding-top: 2em;
   display: flex;
   align-items: center;
   margin-bottom: 1rem;

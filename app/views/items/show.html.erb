@@ -1,20 +1,26 @@
 <!-- items -->
 <div class="item-section-container">
   <h3>Item</h3>
-  <div class="comment-section-text">
+  <div class="item-section-text">
     <p><%= @item.name %></p>
     <p><%= @item.description %></p>
   </div>
-  <div class="comment-section-author">
+  <div class="item-section-author">
     <div class="item-user-avatar", style="max-width: 65px">
       <%= image_tag(@item.user.avatar) %>
     </div>
-    <div class="comment-section-name">
+    <div class="item-section-name">
       <h5><%= @item.user.username %></h5>
       <p><%= @item.updated_at %></p>
       <% if @item.user == current_user %>
         <%= button_to 'Edit your item', edit_item_path(@item), method: :get %>
       <% end %>
+    </div>
+    <div class="button-pad">
+      <button class="button button-like">
+        <i class="fa fa-heart"></i>
+        <span>Like</span>
+      </button>
     </div>
   </div>
 </div>
