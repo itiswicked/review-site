@@ -26,52 +26,69 @@ $(function() {
     })
 });
 
-let upvoteFunction = () => {
-  $(".upvote").click( function(event) {
-    event.preventDefault();
+makeUpvoteAjaxRequest = (id) => {
+  var upvoteRequest = $.ajax({
+    type: "POST",
+    url: `/api/v1/reviews/${id}/upvote`,
+    data: { review_id: id },
+    success: function() {
+      var divUp = $("tr").find("#up");
+      var divCount = $("tr").find("#vote-count");
+      var upVoteTotal = 0;
+      divUp.toggleClass("on");
+      divDown.removeClass("on");
+      if (divUp.hasClass("on")) {
+        upVoteTotal += 1
+        $(divCount).text(upVoteTotal)
+      } else {
+          if (upVoteTotal >= 1) {
+            upVoteTotal -= 1
+            $(divCount).text(upVoteTotal +"votes")
+          } else {
+            upVoteTotal -= 0
+            $(divCount).text(upVoteTotal)
+          }
+        };
+    },
+  });
+};
 
-    var divUp = $(this).find("#up");
-    divUp.toggleClass('on');
-    return false;
-}
-
-let downvoteFunction = () => {
-  $('.downvote').on("click", function(event) {
-    event.preventDefault();
-
-    var divDown = $(this).find("#down");
-    divDown.toggleClass('on');
-    return false;
-}
+makeDownvoteAjaxRequest = (id) => {
+  var downvoteRequest = $.ajax({
+    type: "POST",
+    url: `/api/v1/reviews/${id}/downvote`,
+    data: { review_id: id },
+    success: function() {
+      var divDown = $("tr").find("#down");
+      var divUp = $("tr").find("#up");
+      divDown.toggleClass("on");
+      divUp.removeClass("on");
+      if (divDown.hasClass("on")) {
+        upVoteTotal += 1
+        $(divCount).text(upVoteTotal)
+      } else {
+          if (upVoteTotal >= 1) {
+            upVoteTotal -= 1
+            $(divCount).text(upVoteTotal +"votes")
+          } else {
+            upVoteTotal -= 0
+            $(divCount).text(upVoteTotal)
+          }
+        };
+    },
+  });
+};
 
 $(document).ready(function() {
-  // $(".upvote").click( function(event) {
-  //   event.preventDefault();
-  //
-  //   var divUp = $(this).find("#up");
-  //   divUp.toggleClass('on');
-  //   return false;
-
-  upvoteFunction();
-  downvoteFunction();
-
-    $.ajax({
-    url : "/api/v1/reviews",
-    type: "GET",
-    success: function(data, textStatus, jqXHR) {
-        // change UI here.
-
-    },
-    error: function (jqXHR, textStatus, errorThrown) {
-    }
-});
+  $('.upvote').on("click", function(event) {
+    event.preventDefault();
+    var eventId = parseInt(event.target.dataset.id);
+    makeUpvoteAjaxRequest(eventId);
   });
 
-  // $('.downvote').on("click", function(event) {
-  //   event.preventDefault();
-  //
-  //   var divDown = $(this).find("#down");
-  //   divDown.toggleClass('on');
-  //   return false;
-  // });
-})
+  $('.downvote').on("click", function(event) {
+    event.preventDefault();
+    var eventId = parseInt(event.target.dataset.id);
+    makeDownvoteAjaxRequest(eventId);
+  });
+});

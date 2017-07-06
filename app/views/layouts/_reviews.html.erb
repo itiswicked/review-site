@@ -26,11 +26,11 @@
                 <tr>
                   <td class="votecell">
                     <%= link_to upvote_api_v1_review_path(review), class: "upvote", method: :post do %>
-                      <div id="up" class="vote"></div>
+                      <div id="up" class="vote" data-id="<%= review.id %>"></div>
                     <% end %>
-                    <!-- <td><%= pluralize(review.votes.count, "vote") %></td> -->
+                    <div id="vote-count"><p><%= pluralize(review.votes.count, "vote") %></p></div>
                     <%= link_to downvote_api_v1_review_path(review), class: "downvote", method: :post do %>
-                      <div id="down" class="vote"></div>
+                      <div id="down" class="vote" data-id="<%= review.id %>"></div>
                     <% end %>
                   </td>
                 <tr>
