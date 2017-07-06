@@ -15,6 +15,14 @@
 //= require foundation
 //= require_tree .
 
+function updatePageVoteCount(element, voteTotal) {
+  if(voteTotal == 1) {
+    element.text("1 vote");
+  } else {
+    element.text(voteTotal + " votes")
+  }
+}
+
 $(function(){ $(document).foundation(); });
 
 $(document).foundation();
@@ -27,28 +35,23 @@ $(function() {
 });
 
 makeUpvoteAjaxRequest = (id) => {
-  var upvoteRequest = $.ajax({
+  $.ajax({
     type: "POST",
     url: `/api/v1/reviews/${id}/upvote`,
     data: { review_id: id },
     success: function() {
       var divUp = $("tr").find("#up");
-      var divCount = $("tr").find("#vote-count");
-      var upVoteTotal = 0;
+      var divDown = $("tr").find("#down");
       divUp.toggleClass("on");
       divDown.removeClass("on");
+
+      var voteCountElement = $("tr").find("#vote-count").find("p");
+      var voteTotal = parseInt(voteCountElement.text());
       if (divUp.hasClass("on")) {
-        upVoteTotal += 1
-        $(divCount).text(upVoteTotal)
+        updatePageVoteCount(voteCountElement, voteTotal + 1)
       } else {
-          if (upVoteTotal >= 1) {
-            upVoteTotal -= 1
-            $(divCount).text(upVoteTotal +"votes")
-          } else {
-            upVoteTotal -= 0
-            $(divCount).text(upVoteTotal)
-          }
-        };
+        updatePageVoteCount(voteCountElement, voteTotal - 1)
+      };
     },
   });
 };
@@ -80,14 +83,16 @@ makeDownvoteAjaxRequest = (id) => {
 };
 
 $(document).ready(function() {
-  $('.upvote').on("click", function(event) {
+  $('.up-vote').on("click", function(event) {
     event.preventDefault();
-    var eventId = parseInt(event.target.dataset.id);
-    makeUpvoteAjaxRequest(eventId);
+    event.stopPropagation();
+    var reviewId = parseInt(event.target.dataset.id);
+    makeUpvoteAjaxRequest(reviewId);
   });
 
-  $('.downvote').on("click", function(event) {
+  $('.down-vote').on("click", function(event) {
     event.preventDefault();
+    event.stopPropogation();
     var eventId = parseInt(event.target.dataset.id);
     makeDownvoteAjaxRequest(eventId);
   });
